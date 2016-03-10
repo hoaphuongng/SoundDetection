@@ -1,13 +1,13 @@
 # SoundDetection
 Latest update 2015.12.25 by Phuong Nguyen.
 Original source code by Gao Chao.
-----------------------------------
-Contact: hoaphuong310596@gmail.com
 ==================================
+Contact: hoaphuong310596@gmail.com
+----------------------------------
 
    SOUND DETECTION APPLICATION
 
-==================================
+----------------------------------
 
 I. DESCRIPTION
 -----------
