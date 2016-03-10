@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sound Detection Application</title>
+	<style type="text/css">
+		body{
+			text-align: center;
+		}
+		h1{
+			font-family: Trebuchet MS;
+			font-size:32px;
+		}
+		#canvas{
+			background-color: #F8D9C5;
+		}
+		#footer{
+			font-family: Trebuchet MS;
+			font-size:17px;
+		}
+	</style>
+</head>
+<body>
+	<h1>
+		SOUND DETECTION APPLICATION
+	</h1>
+	<!--Draw a canvas where consists of the graph-->
+	<canvas id="canvas" width="600" height="600" style="border:1px solid #000000;">
+	</canvas>
+	<div id="footer">
+		Copyright &copy; 2015 Nguyen Hoa Phuong, All Rights Reserved.
+	</div>
+	
+	<!--Script-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		function draw(){
+			//Canvas will load the txt file where has 8 values and proceed inside function
+			$( "#canvas" ).load( "dblist.txt", function(data) {
+				var c = document.getElementById("canvas");
+				var ctx = c.getContext("2d");
+				
+
+				//Canvas grid
+				for (var x = 0; x < 601; x += 30) {
+					ctx.moveTo(x+60, 0);
+					ctx.lineTo(x+60, 541);
+				}
+				for (var y = 0; y < 601; y += 30) {
+					ctx.moveTo(0, y);
+					ctx.lineTo(601, y);
+				}
+				ctx.strokeStyle = "#888";
+				ctx.stroke();
+
+				//Canvas x-axis
+				ctx.fillStyle = "#602727";
+				ctx.font="17px Trebuchet MS";
+				ctx.fillText("Sound Wave", canvas.width/2-50, canvas.height-10);
+				for(i=1;i<=8;i++){
+					ctx.fillText("dB["+i+"]", 60*i+10, canvas.height-40);
+				}
+				
+				//Canvas y-axis
+				ctx.fillStyle = "#602727";
+				ctx.font="17px Trebuchet MS";
+				ctx.fillText("(dB)", 12,20);
+				for(i=0;i<=10;i++){
+					ctx.fillText(""+i*10+"", 20, canvas.height-(i+2)*30);
+				}
+
+				//The txt file contains 8 values in a string, so we have to split it into pieces of each value seperated by space (" ")
+				var SplitResult = data.split(" ");
+
+				//Draw 8 columns with the for() loop counter i  
+				for(i=1;i<=8;i++){
+					ctx.fillStyle = "#A25757";	//color of columns
+					ctx.fillRect(60*i+15,canvas.height-60-SplitResult[i]*3,30,SplitResult[i]*3);
+				}
+			});
+}
+		//Reload every 2s
+		setInterval(function(){
+			draw() 
+		}, 2000);
+	</script>
+</body>
+</html>
