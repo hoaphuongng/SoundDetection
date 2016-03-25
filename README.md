@@ -47,4 +47,4 @@ Contact: hoaphuong310596@gmail.com
 
 VI. LICENSE
 -----------
-Copyright ©2015 Gao Chao | Vaasa University of Applied Sciences.
+Copyright ©2015 | Vaasa University of Applied Sciences.
